@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"bytes"
+	"flag"
 	"fmt"
 	"math"
 	"os"
@@ -10,7 +11,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-    "flag"
 
 	"github.com/charmbracelet/bubbles/table"
 	tea "github.com/charmbracelet/bubbletea"
@@ -85,12 +85,12 @@ func pingsToRows(pings []*pingStats) []table.Row {
 	rows := make([]table.Row, len(pings))
 	for i, s := range pings {
 		rows[i] = table.Row{
-            s.Name,
-            s.Addr,
-            fmt.Sprintf("%.1f%%", s.PktLoss()), // Packet Loss
-            s.RttAvg().Round(100 * time.Microsecond).String(), // RTT Avg
-            s.RttStdDev().Round(100 * time.Microsecond).String(), // RTT Std Dev
-        }
+			s.Name,
+			s.Addr,
+			fmt.Sprintf("%.1f%%", s.PktLoss()), // Packet Loss
+			s.RttAvg().Round(100 * time.Microsecond).String(),    // RTT Avg
+			s.RttStdDev().Round(100 * time.Microsecond).String(), // RTT Std Dev
+		}
 	}
 	return rows
 }
@@ -192,7 +192,7 @@ func newTable(cols []table.Column, rows []table.Row) table.Model {
 }
 
 func main() {
-    flag.Parse()
+	flag.Parse()
 
 	pings := readPingTargets(flag.Arg(0))
 	for _, s := range pings {
