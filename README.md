@@ -8,6 +8,20 @@ It will show you table of stats for each ping target. Stats includes
 - RTT Avg (round-trip time average)
 - RTT Std Dev (round-trip time standard deviation)
 
+## Install
+
+You can install it to your `$GOPATH/bin` with `go install`
+
+```bash
+$ go install github.com/abbit/pinglist@latest
+```
+
+## Usage
+
+```bash
+$ pinglist sample-list.txt
+```
+
 Txt file defines list of ping targets with their name and IP or hostname as `name|host`.
 
 Example:
