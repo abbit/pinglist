@@ -1,0 +1,3 @@
+google|173.194.73.139
+yandex|ya.ru
+another host|example.com
